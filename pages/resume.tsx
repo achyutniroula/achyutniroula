@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../components/Layout';
-import { FaDownload, FaGraduationCap, FaBriefcase, FaCode, FaWrench } from 'react-icons/fa';
+import { FaDownload, FaGraduationCap, FaBriefcase, FaCode, FaWrench, FaUser, FaCertificate } from 'react-icons/fa';
 import { getMockPersonalInfo, PersonalInfo } from '../lib/wordpress';
 import styles from '../styles/Resume.module.css';
 
@@ -29,6 +29,19 @@ export default function Resume({ personalInfo }: ResumeProps) {
             <h1 className={styles.title}>Resume</h1>
             <hr className="rule" />
 
+            {/* Summary Section */}
+            <div className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <FaUser className={styles.icon} />
+                <h2>Summary</h2>
+              </div>
+              <div className={styles.content}>
+                <p className={styles.summary}>
+                  Recent Computer Science Honours graduate (Nipissing University, May 2026, GPA 3.7/4.0) with hands-on experience across full-stack development, distributed systems, and applied AI. Built production AI/computer vision infrastructure as a research engineer, founded a full-stack SaaS product solo in six weeks, and has three years of prior research and web development experience at Nipissing. Comfortable owning a system end to end, from architecture through production incident response.
+                </p>
+              </div>
+            </div>
+
             {/* Experience Section */}
             <div className={styles.section}>
               <div className={styles.sectionHeader}>
@@ -37,30 +50,36 @@ export default function Resume({ personalInfo }: ResumeProps) {
               </div>
               <div className={styles.content}>
                 <div className={styles.item}>
-                  <h3>Co-Founder, Founding Software Engineer</h3>
-                  <p className={styles.institution}>Apatheia — North Bay, ON</p>
-                  <p className={styles.date}>Jun. 2025 – Present</p>
-                  <ul className={styles.details}>
-                    <li>Architected a cloud-native multimodal video understanding platform on AWS (EC2, S3, SQS, DynamoDB), integrating 8 neural models across distributed microservices.</li>
-                    <li>Built and owned REST API endpoints connecting async perception, fusion, and narrative services; authored root-cause analysis and cross-service API documentation for stakeholders.</li>
-                  </ul>
-                </div>
-                <div className={styles.item}>
-                  <h3>Web Developer, Research Assistant</h3>
+                  <h3>Software Engineer, Researcher</h3>
                   <p className={styles.institution}>Nipissing University — North Bay, ON</p>
-                  <p className={styles.date}>May 2023 – Aug. 2025</p>
+                  <p className={styles.date}>Jan. 2026 – Apr. 2026</p>
                   <ul className={styles.details}>
-                    <li>Built and maintained a responsive HTML5/CSS3/JavaScript faculty website integrated with a database-backed CMS; delivered features across the full SDLC using Git branching and pull request workflows.</li>
-                    <li>Conducted peer code reviews and authored technical documentation for both developer and non-technical audiences.</li>
+                    <li>Designed and deployed distributed REST APIs on AWS (EC2, S3, SQS) connecting 8 neural models in an async computer vision pipeline; owned service architecture and deployment for high availability with no senior engineering oversight.</li>
+                    <li>Containerized all microservices on Linux/EC2 with Docker; wrote 9 automated test suites covering frame-level correctness and pipeline edge cases.</li>
+                    <li>Implemented observability across all model endpoints; authored root-cause reports and API documentation consumed by internal engineering stakeholders; served as sole on-call engineer for production incidents.</li>
                   </ul>
                 </div>
                 <div className={styles.item}>
-                  <h3>Sales Associate II, Flooring &amp; Decor / Tool Rental</h3>
-                  <p className={styles.institution}>The Home Depot — North Bay, ON</p>
-                  <p className={styles.date}>Dec. 2022 – Present</p>
+                  <h3>Founder</h3>
+                  <p className={styles.institution}>Norlease (northlease.ca) — North Bay, ON</p>
+                  <p className={styles.date}>Aug. 2026 – present</p>
                   <ul className={styles.details}>
-                    <li>Advised 20+ clients weekly across two specialized departments; resolved issues through clear verbal and written communication.</li>
-                    <li>Trained customers on tool operation and installation; adapted communication for audiences from contractors to first-time homeowners.</li>
+                    <li>Identified a structural gap in the rental market — widespread listing fraud on Kijiji/Facebook Marketplace combined with rising vacancy rates — and built a verified rental listings platform for North Bay/northern Ontario around it.</li>
+                    <li>Designed a verification system (phone OTP plus manually reviewed government ID and selfie) that closes the fraud gap without triggering Ontario Human Rights Code exposure from income or credit filtering; built and stress-tested the verification pipeline myself against dozens of real ID/selfie test cases before launch.</li>
+                    <li>Architected and built the full stack solo: Next.js 16/React 19/TypeScript/Tailwind 4, Postgres 17 with PostGIS and pg_trgm on Neon, Drizzle ORM, Hetzner + Coolify + Docker, Cloudflare R2, Clerk auth, Telnyx SMS OTP, self-hosted Protomaps/MapLibre tile pipeline, pg-boss for job queuing.</li>
+                    <li>Ran founder-led sales in parallel with development, securing founding landlord partners ahead of public launch, on a fixed six-week build-to-launch timeline.</li>
+                  </ul>
+                </div>
+                <div className={styles.item}>
+                  <h3>Research Assistant &amp; Web Developer, Dr. Vesko Valov</h3>
+                  <p className={styles.institution}>Nipissing University — North Bay, ON</p>
+                  <p className={styles.date}>May – Aug. 2023, 2024, 2025 (three consecutive summer contracts)</p>
+                  <ul className={styles.details}>
+                    <li>Built and maintained a faculty research portfolio site in WordPress, cataloguing a professor&apos;s full body of published work and keeping every entry accurate as new papers were added.</li>
+                    <li>Coordinated with University Technology Services and Media &amp; Communications to secure access, permissions, and approvals for site changes.</li>
+                    <li>Set up a guided, step-by-step process on the professor&apos;s campus workstation so he could self-serve future edits to published research without developer involvement.</li>
+                    <li>Continued attending in-person and Teams meetings after each contract ended to troubleshoot WordPress and campus software issues, unpaid, because the work wasn&apos;t finished.</li>
+                    <li>Contributed to Multimodal Video Understanding research (AWS, 8+ neural models, WebSocket validation), handling the software implementation side and documenting results for a non-technical audience.</li>
                   </ul>
                 </div>
               </div>
@@ -75,26 +94,29 @@ export default function Resume({ personalInfo }: ResumeProps) {
               <div className={styles.content}>
                 <div className={styles.item}>
                   <h3>LEON (LearnOne)</h3>
-                  <p className={styles.institution}>Python, FastAPI, PostgreSQL, Redis, Gemini (Google AI)</p>
+                  <p className={styles.institution}>Python, FastAPI, PostgreSQL, pgvector, fastembed, React, TypeScript, Claude API</p>
                   <ul className={styles.details}>
-                    <li>Engineered a sub-300ms conversational AI loop using Gemini for low-latency LLM inference, streaming sentence-by-sentence TTS, and VAD-based barge-in interruption; migrated from Groq to Gemini to address rate-limit constraints in a real-time voice pipeline.</li>
-                    <li>Designed an adaptive learning engine with SM-2 spaced repetition and a knowledge graph extracted per conversation; FastAPI backend with PostgreSQL and Redis.</li>
+                    <li>A public, no-auth tool that indexes a GitHub repository and generates a book-style explainer of the codebase — preface, contents, pipeline breakdown, and in-depth sections, with &quot;noobie&quot; and &quot;normal&quot; reading modes and Mermaid diagrams for architecture visualization.</li>
+                    <li>Built the core RAG pipeline and multi-stage &quot;thinker&quot; LLM chain that reasons through a repository&apos;s structure and produces the explanatory content.</li>
+                    <li>Switched embedding generation from a rate-limited external API to local in-process embeddings via fastembed, cutting indexing time from 10–25+ minutes down to a few minutes per repo with no external rate limits.</li>
+                    <li>Added real-time indexing progress tracking and staleness-recovery for orphaned background jobs, e.g. after server restarts.</li>
+                    <li>Deliberately scaled the project down from an earlier, broader scope (voice interaction, chat, curriculum generation, quiz/review/progress tracking, auth) to a minimal, focused, public tool — a scope cut made to ship something reliable rather than keep expanding an unfinished feature set.</li>
                   </ul>
                 </div>
                 <div className={styles.item}>
-                  <h3>JobHunt AI</h3>
-                  <p className={styles.institution}>Python, FastAPI, React, TypeScript, Docker, Nginx, SQLite</p>
+                  <h3>JobHunt AI + ResOptimum</h3>
+                  <p className={styles.institution}>Python, FastAPI, React, TypeScript, Docker, Nginx, SQLite, Claude API, pdfplumber</p>
                   <ul className={styles.details}>
-                    <li>Built a multi-step LLM pipeline scraping 7 job boards concurrently with an ATS classifier and semantic resume-matching; containerized with Docker Compose and Nginx reverse proxy.</li>
-                    <li>Wrote a pytest integration suite covering all REST API endpoints; implemented agentic workflow orchestrating scraping, classification, and cover letter generation end-to-end.</li>
+                    <li>Distributed job-scraping platform pulling from 7 boards concurrently using async I/O and connection pooling; processes 1,200+ listings per run with sub-3-second per-board response handling; semantic matching and ATS classification on collected listings.</li>
+                    <li>ResOptimum, the integrated resume-optimization module: structured LLM prompts with JSON schema validation, role detection, and prompt chaining; REST API ingesting PDF and job description input to produce ATS-targeted LaTeX output, with a second LLM pass enforcing one-page fit and factual accuracy.</li>
+                    <li>Full pytest integration test coverage across every API endpoint; containerized end-to-end with Docker Compose and Nginx as reverse proxy.</li>
                   </ul>
                 </div>
                 <div className={styles.item}>
-                  <h3>ResOptimum</h3>
-                  <p className={styles.institution}>Python, FastAPI, Claude API, pdfplumber, LaTeX</p>
+                  <h3>Inventory</h3>
+                  <p className={styles.institution}>Python, Flask, Docker, Firebase, Google Cloud Run</p>
                   <ul className={styles.details}>
-                    <li>Engineered structured LLM prompts with JSON schema validation, role detection, and prompt chaining; built a REST API ingesting PDF and job description inputs to produce ATS-targeted LaTeX output.</li>
-                    <li>Implemented a one-page fit-check with auto-compression via a second LLM pass; applied prompt engineering techniques to maintain factual accuracy under structured output constraints.</li>
+                    <li>Cloud-native inventory management system deployed to Google Cloud Run with Docker containerization; role-based access control, RESTful API endpoints, Firebase Realtime Database for persistent storage, Cloudinary CDN for asset management.</li>
                   </ul>
                 </div>
               </div>
@@ -113,8 +135,23 @@ export default function Resume({ personalInfo }: ResumeProps) {
                   <p className={styles.date}>May 2026 | GPA: 3.7/4.0</p>
                   <ul className={styles.details}>
                     <li>Awards: President&apos;s Scholarship (2021), Carl Sanders Scholarship (2022, 2023, 2024, 2025)</li>
-                    <li>Relevant coursework: Distributed Systems (96%), Databases &amp; Data Management (96%), Software Engineering (89%), Artificial Neural Networks (83%), Data Structures (83%)</li>
+                    <li>Relevant coursework: Distributed Systems (96%), Databases &amp; Data Management (96%), Software Engineering (89%), Artificial Neural Networks (83%)</li>
                   </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Certifications Section */}
+            <div className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <FaCertificate className={styles.icon} />
+                <h2>Certifications</h2>
+              </div>
+              <div className={styles.content}>
+                <div className={styles.item}>
+                  <h3>Life License Qualification Program (LLQP)</h3>
+                  <p className={styles.institution}>Licensed Life &amp; Accident and Sickness Insurance Agent, Ontario</p>
+                  <p className={styles.date}>2026</p>
                 </div>
               </div>
             </div>
@@ -130,37 +167,55 @@ export default function Resume({ personalInfo }: ResumeProps) {
                   <div className={styles.skillCategory}>
                     <h3>Languages</h3>
                     <div className={styles.skillTags}>
-                      <span>Java</span><span>TypeScript</span><span>Python</span><span>JavaScript</span><span>SQL</span><span>C++</span><span>HTML5/CSS3</span>
+                      <span>Python</span><span>Java</span><span>TypeScript</span><span>JavaScript</span><span>SQL</span><span>C++</span>
                     </div>
                   </div>
                   <div className={styles.skillCategory}>
                     <h3>Frameworks &amp; APIs</h3>
                     <div className={styles.skillTags}>
-                      <span>FastAPI</span><span>React</span><span>Node.js</span><span>Flask</span><span>Nginx</span><span>RESTful APIs</span><span>microservices</span>
-                    </div>
-                  </div>
-                  <div className={styles.skillCategory}>
-                    <h3>AI &amp; LLM</h3>
-                    <div className={styles.skillTags}>
-                      <span>Claude API</span><span>Gemini</span><span>Groq</span><span>OpenRouter</span><span>agentic workflows</span><span>LLM pipelines</span><span>prompt engineering</span>
+                      <span>FastAPI</span><span>Flask</span><span>React</span><span>Node.js</span><span>RESTful APIs</span><span>microservices</span><span>Nginx</span>
                     </div>
                   </div>
                   <div className={styles.skillCategory}>
                     <h3>Cloud &amp; DevOps</h3>
                     <div className={styles.skillTags}>
-                      <span>AWS (EC2, S3, SQS, DynamoDB)</span><span>Docker</span><span>Linux</span><span>Git</span><span>Google Cloud Run</span><span>Firebase</span>
+                      <span>AWS (EC2, S3, SQS, DynamoDB)</span><span>Google Cloud Run</span><span>Hetzner</span><span>Coolify</span><span>Docker</span><span>Docker Compose</span><span>Git</span><span>Linux</span>
                     </div>
                   </div>
                   <div className={styles.skillCategory}>
                     <h3>Databases</h3>
                     <div className={styles.skillTags}>
-                      <span>PostgreSQL</span><span>Redis</span><span>SQLite</span><span>Firebase</span>
+                      <span>PostgreSQL</span><span>PostGIS</span><span>pg_trgm</span><span>pgvector</span><span>Redis</span><span>SQLite</span><span>Firebase (NoSQL)</span>
+                    </div>
+                  </div>
+                  <div className={styles.skillCategory}>
+                    <h3>AI &amp; ML</h3>
+                    <div className={styles.skillTags}>
+                      <span>Computer vision pipelines</span><span>RAG</span><span>LLM integration (Claude API)</span><span>prompt engineering</span><span>prompt chaining</span><span>local embeddings (fastembed)</span><span>semantic similarity</span>
+                    </div>
+                  </div>
+                  <div className={styles.skillCategory}>
+                    <h3>Auth &amp; Comms</h3>
+                    <div className={styles.skillTags}>
+                      <span>Clerk</span><span>Telnyx SMS OTP</span><span>AWS Cognito</span><span>Firebase Authentication</span>
+                    </div>
+                  </div>
+                  <div className={styles.skillCategory}>
+                    <h3>Maps &amp; Geospatial</h3>
+                    <div className={styles.skillTags}>
+                      <span>Self-hosted Protomaps/MapLibre tile pipeline</span><span>PostGIS geospatial search</span>
                     </div>
                   </div>
                   <div className={styles.skillCategory}>
                     <h3>Testing</h3>
                     <div className={styles.skillTags}>
-                      <span>pytest</span><span>JUnit</span><span>Playwright</span><span>TDD</span>
+                      <span>pytest</span><span>JUnit</span><span>Playwright</span><span>integration and end-to-end testing</span>
+                    </div>
+                  </div>
+                  <div className={styles.skillCategory}>
+                    <h3>Other</h3>
+                    <div className={styles.skillTags}>
+                      <span>System architecture</span><span>stakeholder communication</span><span>technical writing</span><span>agile/SDLC</span>
                     </div>
                   </div>
                 </div>

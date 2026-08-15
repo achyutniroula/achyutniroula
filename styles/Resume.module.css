@@ -61,6 +61,12 @@
   color: var(--color-muted);
 }
 
+.summary {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  max-width: 68ch;
+}
+
 .item {
   margin-bottom: 2.25rem;
 }
