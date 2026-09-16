@@ -44,7 +44,7 @@ const Footer = ({ personalInfo }: FooterProps) => {
               <a 
                 href={info.linkedin} 
                 target="_blank" 
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 aria-label="LinkedIn"
                 className={styles.socialIcon}
               >
@@ -53,7 +53,7 @@ const Footer = ({ personalInfo }: FooterProps) => {
               <a 
                 href={info.github} 
                 target="_blank" 
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 aria-label="GitHub"
                 className={styles.socialIcon}
               >
@@ -62,7 +62,7 @@ const Footer = ({ personalInfo }: FooterProps) => {
               <a 
                 href={info.instagram} 
                 target="_blank" 
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 aria-label="Instagram"
                 className={styles.socialIcon}
               >

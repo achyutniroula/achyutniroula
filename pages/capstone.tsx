@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import path from 'path';
 import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 import { getMockPersonalInfo, PersonalInfo } from '../lib/wordpress';
 import styles from '../styles/Capstone.module.css';
 
@@ -17,14 +17,11 @@ export default function Capstone({ html, personalInfo }: CapstoneProps) {
 
   return (
     <>
-      <Head>
-        <title>Capstone Research — Multimodal Video Understanding</title>
-        <meta
-          name="description"
-          content="Capstone research page for a multimodal video understanding platform, with architecture, experimental design, and results."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      <SEO
+        title="Capstone Research — Multimodal Video Understanding"
+        description="Honours Capstone research paper by Achyut Niroula at Nipissing University, exploring cloud-native multimodal video understanding and neural pipelines."
+        canonical="/capstone"
+      />
 
       <Layout personalInfo={personalInfo}>
         <div className={styles.page}>

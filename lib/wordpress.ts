@@ -255,6 +255,6 @@ export const getMockPersonalInfo = (): PersonalInfo => ({
   github: 'https://github.com/achyutniroula',
   instagram: 'https://instagram.com/achniroula',
   resume_url: '/resume.pdf',
-  bio: 'Computer Science graduate from Nipissing University',
-  profile_image: '/profile.jpg',
+  bio: 'Founder & CEO of Norlease, building verified rental infrastructure for Northern Ontario. Computer Science Honours graduate from Nipissing University with expertise in distributed AI systems, and a licensed LLQP insurance advisor in Ontario.',
+  profile_image: '/profile.png',
 });

@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
 import StatCounter from '../../components/StatCounter';
 import Reveal from '../../components/Reveal';
+import SEO from '../../components/SEO';
 import SectionNav from '../../components/insurance/SectionNav';
 import { useReveal } from '../../lib/useReveal';
 import { getMockPersonalInfo, PersonalInfo } from '../../lib/wordpress';
@@ -80,13 +80,11 @@ export default function Insurance({ personalInfo }: InsuranceProps) {
 
   return (
     <>
-      <Head>
-        <title>Insurance — Achyut Niroula</title>
-        <meta
-          name="description"
-          content="Ontario LLQP-licensed insurance services offered by Achyut Niroula."
-        />
-      </Head>
+      <SEO
+        title="Insurance & Registered Accounts"
+        description="Ontario LLQP-licensed life, critical illness, and disability insurance guidance, plus registered account advice (TFSA, RRSP, FHSA) by Achyut Niroula."
+        canonical="/insurance"
+      />
 
       <Layout personalInfo={personalInfo}>
         <SectionNav />

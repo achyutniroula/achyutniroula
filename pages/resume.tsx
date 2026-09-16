@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 import { FaDownload, FaGraduationCap, FaBriefcase, FaCode, FaWrench, FaUser, FaCertificate } from 'react-icons/fa';
 import { getMockPersonalInfo, PersonalInfo } from '../lib/wordpress';
 import styles from '../styles/Resume.module.css';
@@ -12,10 +12,11 @@ interface ResumeProps {
 export default function Resume({ personalInfo }: ResumeProps) {
   return (
     <>
-      <Head>
-        <title>Resume — Achyut Niroula</title>
-        <meta name="description" content="Resume and CV of Achyut Niroula" />
-      </Head>
+      <SEO
+        title="Resume & Academic Background"
+        description="Curriculum vitae and professional background of Achyut Niroula — Computer Science Honours graduate from Nipissing University, Software Engineer, and Founder."
+        canonical="/resume"
+      />
 
       <Layout personalInfo={personalInfo}>
         <section className={styles.resumeSection}>

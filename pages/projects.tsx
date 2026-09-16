@@ -1,8 +1,8 @@
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import Layout from '../components/Layout';
 import ProjectThumbnail from '../components/ProjectThumbnail';
 import NorleaseCard from '../components/NorleaseCard';
+import SEO from '../components/SEO';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { getMockProjects, getMockPersonalInfo, Project, PersonalInfo } from '../lib/wordpress';
 import styles from '../styles/Projects.module.css';
@@ -15,10 +15,11 @@ interface ProjectsProps {
 export default function Projects({ projects, personalInfo }: ProjectsProps) {
   return (
     <>
-      <Head>
-        <title>Projects — Achyut Niroula</title>
-        <meta name="description" content="Portfolio of projects by Achyut Niroula" />
-      </Head>
+      <SEO
+        title="Projects & Software Engineering"
+        description="A showcase of full-stack AI, computer vision, and distributed software engineering projects built by Achyut Niroula, founder of Norlease."
+        canonical="/projects"
+      />
 
       <Layout personalInfo={personalInfo}>
         <section className={styles.projectsSection}>

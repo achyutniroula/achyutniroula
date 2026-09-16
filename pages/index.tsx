@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '../components/Layout';
@@ -8,6 +7,7 @@ import StatCounter from '../components/StatCounter';
 import ContactForm from '../components/ContactForm';
 import NorleaseCard from '../components/NorleaseCard';
 import Reveal from '../components/Reveal';
+import SEO from '../components/SEO';
 import { getMockProjects, getMockPersonalInfo, Project, PersonalInfo } from '../lib/wordpress';
 import { insuranceStats } from '../lib/insuranceServices';
 import styles from '../styles/Home.module.css';
@@ -41,15 +41,7 @@ export default function Home({ projects, personalInfo }: HomeProps) {
 
   return (
     <>
-      <Head>
-        <title>Achyut Niroula</title>
-        <meta
-          name="description"
-          content="Achyut Niroula — software engineer and licensed insurance advisor."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <SEO canonical="/" />
 
       <Layout personalInfo={personalInfo}>
         <section className={styles.hero}>
@@ -59,12 +51,12 @@ export default function Home({ projects, personalInfo }: HomeProps) {
                 <span className={styles.eyebrow}>Bio</span>
                 <h1 className={styles.heroTitle}>Achyut Niroula</h1>
                 <p className={styles.heroBio}>
-                  {personalInfo.bio}. I design elegant, resilient software and AI-first systems, and separately
-                  help clients protect what matters most as a licensed insurance advisor in Ontario.
+                  {personalInfo.bio}
                 </p>
                 <div className={styles.heroLinks}>
                   <a href="#projects">View projects</a>
                   <a href="#insurance">Insurance services</a>
+                  <a href={personalInfo.resume_url} download>Download resume</a>
                 </div>
               </div>
 
