@@ -40,3 +40,8 @@ firebase-debug.log
 
 # Local planning docs (not for the repo)
 claude-code-thumbnails-accounts-norlease-prompt.md
+claude-code-mobile-fixes-prompt.md
+
+# QA screenshots and scratch scripts
+/qa/
+/qa-scripts/
