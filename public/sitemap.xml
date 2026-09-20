@@ -1,110 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://achyutniroula.com</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/projects</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/projects/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/resume</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/resume/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/capstone</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/capstone/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://achyut-niroula.web.app/insurance/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://achyut-niroula.web.app/insurance/segregated-funds/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/whole-life/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/segregated-funds</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/critical-illness/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/whole-life</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/disability/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/critical-illness</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/term-life/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/disability</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/annuities/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/term-life</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/mortgage-creditor/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/accounts/tfsa</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/group-benefits/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/accounts/rrsp</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/accounts/tfsa/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/accounts/fhsa</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/accounts/rrsp/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/accounts/resp</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/accounts/fhsa/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/accounts/non-registered</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/accounts/resp/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/accounts/rrif</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/accounts/non-registered/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/accounts/lira-lif</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/accounts/rrif/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://achyutniroula.com/insurance/accounts/rdsp</loc>
-    <lastmod>2026-09-16</lastmod>
+    <loc>https://achyut-niroula.web.app/insurance/accounts/lira-lif/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://achyut-niroula.web.app/insurance/accounts/rdsp/</loc>
+    <lastmod>2026-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
