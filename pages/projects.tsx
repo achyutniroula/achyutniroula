@@ -16,9 +16,13 @@ export default function Projects({ projects, personalInfo }: ProjectsProps) {
   return (
     <>
       <SEO
-        title="Projects & Software Engineering"
+        title="Projects and Software Engineering"
         description="A showcase of full-stack AI, computer vision, and distributed software engineering projects built by Achyut Niroula, founder of Norlease."
-        canonical="/projects"
+        canonical="/projects/"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Projects', path: '/projects/' },
+        ]}
       />
 
       <Layout personalInfo={personalInfo}>

@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
 import { useReveal } from '../../lib/useReveal';
 import { getMockPersonalInfo, PersonalInfo } from '../../lib/wordpress';
@@ -37,10 +37,16 @@ export default function InsuranceDetail({ slug, personalInfo }: InsuranceDetailP
 
   return (
     <>
-      <Head>
-        <title>{service.name} — Insurance — Achyut Niroula</title>
-        <meta name="description" content={service.detail.summary} />
-      </Head>
+      <SEO
+        title={`${service.name} Insurance`}
+        description={service.detail.summary}
+        canonical={`/insurance/${slug}/`}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Insurance', path: '/insurance/' },
+          { name: service.name, path: `/insurance/${slug}/` },
+        ]}
+      />
 
       <Layout personalInfo={personalInfo}>
         <section className={styles.section}>

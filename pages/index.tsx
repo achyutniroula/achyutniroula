@@ -41,7 +41,7 @@ export default function Home({ projects, personalInfo }: HomeProps) {
 
   return (
     <>
-      <SEO canonical="/" />
+      <SEO canonical="/" ogType="profile" isProfilePage />
 
       <Layout personalInfo={personalInfo}>
         <section className={styles.hero}>
@@ -63,7 +63,7 @@ export default function Home({ projects, personalInfo }: HomeProps) {
               <div className={styles.heroPhotoFrame}>
                 <Image
                   src={personalInfo.profile_image}
-                  alt={personalInfo.bio}
+                  alt="Portrait of Achyut Niroula"
                   width={520}
                   height={640}
                   className={styles.heroPhoto}
@@ -77,7 +77,7 @@ export default function Home({ projects, personalInfo }: HomeProps) {
         <section className={styles.section} id="projects">
           <div className="container">
             <Reveal>
-              <span className={styles.eyebrow}>Projects</span>
+              <h2 className={styles.eyebrow}>Projects</h2>
               <hr className="rule" />
             </Reveal>
 
@@ -107,7 +107,7 @@ export default function Home({ projects, personalInfo }: HomeProps) {
         <section className={styles.section} id="insurance">
           <div className="container">
             <Reveal>
-              <span className={styles.eyebrow}>Insurance</span>
+              <h2 className={styles.eyebrow}>Insurance</h2>
               <hr className="rule" />
             </Reveal>
 
@@ -121,7 +121,7 @@ export default function Home({ projects, personalInfo }: HomeProps) {
             <div className={styles.statsRow}>
               <StatCounter label="Services offered" value={insuranceStats.servicesOffered} suffix="+" />
               <StatCounter label="Clients helped" value={insuranceStats.clientsHelped} suffix="+" />
-              <StatCounter label="Premium placed" value={insuranceStats.premiumPlaced} prefix="$" suffix="+" />
+              <StatCounter label="in deposits processed" value={insuranceStats.premiumPlaced} prefix="$" suffix="+" />
             </div>
 
             <Link href="/insurance" className={styles.moreLink}>View insurance services</Link>
@@ -131,7 +131,7 @@ export default function Home({ projects, personalInfo }: HomeProps) {
         <section className={styles.section} id="contact">
           <div className="container">
             <Reveal>
-              <span className={`${styles.eyebrow} ${styles.eyebrowStrong}`}>Get in touch</span>
+              <h2 className={`${styles.eyebrow} ${styles.eyebrowStrong}`}>Get in touch</h2>
               <hr className="rule" />
             </Reveal>
 

@@ -18,9 +18,9 @@ export default function Capstone({ html, personalInfo }: CapstoneProps) {
   return (
     <>
       <SEO
-        title="Capstone Research — Multimodal Video Understanding"
+        title="Capstone Research, Multimodal Video Understanding"
         description="Honours Capstone research paper by Achyut Niroula at Nipissing University, exploring cloud-native multimodal video understanding and neural pipelines."
-        canonical="/capstone"
+        canonical="/capstone/"
       />
 
       <Layout personalInfo={personalInfo}>

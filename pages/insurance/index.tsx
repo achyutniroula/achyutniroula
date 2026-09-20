@@ -81,9 +81,9 @@ export default function Insurance({ personalInfo }: InsuranceProps) {
   return (
     <>
       <SEO
-        title="Insurance & Registered Accounts"
+        title="Insurance and Registered Accounts"
         description="Ontario LLQP-licensed life, critical illness, and disability insurance guidance, plus registered account advice (TFSA, RRSP, FHSA) by Achyut Niroula."
-        canonical="/insurance"
+        canonical="/insurance/"
       />
 
       <Layout personalInfo={personalInfo}>
@@ -103,7 +103,7 @@ export default function Insurance({ personalInfo }: InsuranceProps) {
             <Reveal className={styles.statsRow} delay={0.1}>
               <StatCounter label="Services offered" value={insuranceStats.servicesOffered} suffix="+" />
               <StatCounter label="Clients helped" value={insuranceStats.clientsHelped} suffix="+" />
-              <StatCounter label="Premium placed" value={insuranceStats.premiumPlaced} prefix="$" suffix="+" />
+              <StatCounter label="in deposits processed" value={insuranceStats.premiumPlaced} prefix="$" suffix="+" />
             </Reveal>
 
             <hr className="rule" />
