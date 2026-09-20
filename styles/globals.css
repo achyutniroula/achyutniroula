@@ -18,6 +18,10 @@
      near the ink text color. Dark mode override below adds the glow. */
   --color-spotlight-border: rgba(26, 26, 26, 0.85);
   --color-spotlight-shadow: none;
+  /* Fallback before Header's ResizeObserver sets the real measured value.
+     Matches the header's typical rendered height so there is no flash. */
+  --header-height: 70px;
+  --section-nav-height: 44px;
 }
 
 :root[data-theme='dark'] {

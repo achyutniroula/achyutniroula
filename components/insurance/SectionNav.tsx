@@ -10,6 +10,22 @@ export default function SectionNav() {
   const [active, setActive] = useState('products');
   const [showBackToTop, setShowBackToTop] = useState(false);
   const reducedMotionRef = useRef(false);
+  const navRef = useRef<HTMLElement>(null);
+
+  // Publishes this nav's own height so the products/accounts headings can
+  // set scroll-margin-top to the combined header plus nav height, instead of
+  // a hardcoded guess that falls out of sync when either one resizes.
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const setHeightVar = () => {
+      document.documentElement.style.setProperty('--section-nav-height', `${el.getBoundingClientRect().height}px`);
+    };
+    setHeightVar();
+    const observer = new ResizeObserver(setHeightVar);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     reducedMotionRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -53,7 +69,7 @@ export default function SectionNav() {
 
   return (
     <>
-      <nav className={styles.nav} aria-label="Insurance page sections">
+      <nav className={styles.nav} aria-label="Insurance page sections" ref={navRef}>
         <div className={styles.navInner}>
           {SECTIONS.map((s) => (
             <a

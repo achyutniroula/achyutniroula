@@ -17,7 +17,7 @@ const Layout = ({ children, personalInfo }: LayoutProps) => {
   return (
     <>
       <Header />
-      <main style={{ minHeight: '100vh', paddingTop: '88px' }}>
+      <main style={{ minHeight: '100vh', paddingTop: 'var(--header-height)' }}>
         {children}
       </main>
       <Footer personalInfo={personalInfo} />

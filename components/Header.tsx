@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ThemeToggle from './ThemeToggle';
 import styles from '../styles/Header.module.css';
 
@@ -12,6 +12,7 @@ const NAV_LINKS = [
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   const toggleMenu = () => setIsMenuOpen((open) => !open);
   const closeMenu = () => setIsMenuOpen(false);
@@ -23,8 +24,25 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
+  // Publishes the header's real rendered height as a CSS variable so fixed
+  // content below it (main padding, the insurance section nav) can stay
+  // flush against it instead of relying on a hardcoded number that drifts
+  // out of sync whenever the header's own size changes (e.g. the mobile
+  // wordmark font-size breakpoint).
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const setHeightVar = () => {
+      document.documentElement.style.setProperty('--header-height', `${el.getBoundingClientRect().height}px`);
+    };
+    setHeightVar();
+    const observer = new ResizeObserver(setHeightVar);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <header className={styles.header}>
+    <header className={styles.header} ref={headerRef}>
       <div className={styles.container}>
         <button
           className={`${styles.hamburger} ${isMenuOpen ? styles.open : ''}`}

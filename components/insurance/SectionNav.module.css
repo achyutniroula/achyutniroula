@@ -1,6 +1,6 @@
 .nav {
   position: sticky;
-  top: 88px;
+  top: var(--header-height);
   z-index: 900;
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
