@@ -356,12 +356,4 @@ firebase deploy --only hosting --debug
 
 Personal portfolio project - feel free to use as inspiration!
 
-## 🤝 Support
-
-For questions or issues:
-- Email: your.email@example.com
-- GitHub: [@yourusername](https://github.com/yourusername)
-
 ---
-
-Built with ❤️ by Achyut
