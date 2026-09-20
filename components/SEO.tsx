@@ -1,37 +1,53 @@
 import Head from 'next/head';
+import { SITE_URL, SITE_NAME, AUTHOR_NAME, LOCALE } from '../lib/site-config';
+
+export interface Breadcrumb {
+  name: string;
+  path: string;
+}
 
 interface SEOProps {
   title?: string;
   description?: string;
-  canonical?: string;
+  canonical: string;
   ogImage?: string;
-  ogType?: string;
+  ogType?: 'website' | 'profile' | 'article';
   keywords?: string[];
   noindex?: boolean;
+  /** Renders ProfilePage + Person + WebSite JSON-LD. Homepage only. */
+  isProfilePage?: boolean;
+  /** Renders BreadcrumbList JSON-LD for a nested page. */
+  breadcrumbs?: Breadcrumb[];
 }
 
-const DEFAULT_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://achyutniroula.com';
-const DEFAULT_TITLE = 'Achyut Niroula — Software Engineer & Licensed Insurance Advisor';
+const DEFAULT_TITLE = 'Achyut Niroula | Software Engineer and Insurance Advisor';
 const DEFAULT_DESCRIPTION =
-  'Official portfolio of Achyut Niroula — Founder & CEO of Norlease, building verified rental infrastructure for Northern Ontario. Computer Science Honours graduate from Nipissing University with expertise in distributed AI systems, and a licensed LLQP insurance advisor in Ontario.';
-const DEFAULT_OG_IMAGE = `${DEFAULT_SITE_URL}/profile.png`;
+  'Achyut Niroula is a software engineer and insurance advisor based in North Bay, Ontario, and founder of Norlease, building AI powered rental infrastructure.';
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
+const PERSON_ID = `${SITE_URL}/#person`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
 
 const DEFAULT_KEYWORDS = [
   'Achyut Niroula',
-  'Achyut Niroula LinkedIn',
-  'Achyut Niroula GitHub',
-  'Achyut Niroula Instagram',
   'Achyut Niroula Software Engineer',
   'Achyut Niroula Nipissing University',
   'Achyut Niroula Ontario',
   'Achyut Niroula Insurance Advisor',
   'Achyut Niroula Norlease',
-  'Achyut Niroula Portfolio',
   'Software Engineer North Bay',
-  'Licensed Insurance Advisor Ontario',
-  'Multimodal AI',
-  'Computer Vision',
+  'Insurance Advisor North Bay Ontario',
 ];
+
+// Prevents a literal "</script>" inside JSON-LD data from breaking out of
+// the script tag when injected via dangerouslySetInnerHTML.
+function safeJsonLd(data: unknown): string {
+  return JSON.stringify(data).replace(/</g, '\\u003c');
+}
+
+function resolveUrl(pathOrUrl: string): string {
+  if (pathOrUrl.startsWith('http')) return pathOrUrl;
+  return `${SITE_URL}${pathOrUrl.startsWith('/') ? pathOrUrl : `/${pathOrUrl}`}`;
+}
 
 export default function SEO({
   title,
@@ -41,23 +57,24 @@ export default function SEO({
   ogType = 'website',
   keywords = DEFAULT_KEYWORDS,
   noindex = false,
+  isProfilePage = false,
+  breadcrumbs,
 }: SEOProps) {
-  const fullTitle = title ? `${title} | Achyut Niroula` : DEFAULT_TITLE;
-  const canonicalUrl = canonical
-    ? `${DEFAULT_SITE_URL}${canonical.startsWith('/') ? canonical : `/${canonical}`}`
-    : DEFAULT_SITE_URL;
-  const resolvedOgImage = ogImage.startsWith('http') ? ogImage : `${DEFAULT_SITE_URL}${ogImage.startsWith('/') ? ogImage : `/${ogImage}`}`;
+  const fullTitle = title ? `${title} | ${AUTHOR_NAME}` : DEFAULT_TITLE;
+  const canonicalUrl = resolveUrl(canonical);
+  const resolvedOgImage = resolveUrl(ogImage);
+  const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 
   const personJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    '@id': `${DEFAULT_SITE_URL}/#person`,
+    '@id': PERSON_ID,
     name: 'Achyut Niroula',
     givenName: 'Achyut',
     familyName: 'Niroula',
-    url: DEFAULT_SITE_URL,
-    image: `${DEFAULT_SITE_URL}/profile.png`,
-    jobTitle: ['Software Engineer', 'Licensed Insurance Advisor'],
+    url: SITE_URL,
+    image: `${SITE_URL}/profile.png`,
+    jobTitle: ['Software Engineer', 'Insurance Advisor'],
     description: DEFAULT_DESCRIPTION,
     alumniOf: {
       '@type': 'EducationalOrganization',
@@ -77,7 +94,6 @@ export default function SEO({
       'https://instagram.com/achniroula',
     ],
     email: 'mailto:niroula.achyut17@gmail.com',
-    telephone: '+1-249-358-0947',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'North Bay',
@@ -91,63 +107,89 @@ export default function SEO({
       'Distributed Systems',
       'Full-Stack Web Development',
       'Life Insurance',
-      'LLQP Licensing',
     ],
   };
 
   const webSiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': `${DEFAULT_SITE_URL}/#website`,
-    url: DEFAULT_SITE_URL,
-    name: 'Achyut Niroula Portfolio',
-    author: {
-      '@id': `${DEFAULT_SITE_URL}/#person`,
-    },
-    inLanguage: 'en-US',
+    '@id': WEBSITE_ID,
+    url: SITE_URL,
+    name: `${AUTHOR_NAME} Portfolio`,
+    author: { '@id': PERSON_ID },
+    inLanguage: 'en-CA',
   };
+
+  const profilePageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${SITE_URL}/#profilepage`,
+    url: SITE_URL,
+    name: DEFAULT_TITLE,
+    mainEntity: { '@id': PERSON_ID },
+    isPartOf: { '@id': WEBSITE_ID },
+    inLanguage: 'en-CA',
+  };
+
+  const breadcrumbJsonLd = breadcrumbs
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbs.map((crumb, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: crumb.name,
+          item: resolveUrl(crumb.path),
+        })),
+      }
+    : null;
 
   return (
     <Head>
-      {/* Google Site Verification */}
-      <meta name="google-site-verification" content="wJ8hxhvNXrq5D3gVNoX1E8EN3m_Z98Sjq8d5TxaNS78" />
+      {process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && (
+        <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION} />
+      )}
+      {process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION && (
+        <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION} />
+      )}
 
-      {/* Basic Metadata */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords.join(', ')} />
-      <meta name="author" content="Achyut Niroula" />
-      <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
-      <meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
-      <meta name="bingbot" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+      <meta name="author" content={AUTHOR_NAME} />
+      <meta name="robots" content={robotsContent} />
+      <meta name="googlebot" content={robotsContent} />
+      <meta name="bingbot" content={robotsContent} />
 
-      {/* Canonical URL */}
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* Open Graph Tags */}
-      <meta property="og:site_name" content="Achyut Niroula" />
+      <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:type" content={ogType} />
+      <meta property="og:locale" content={LOCALE} />
       <meta property="og:image" content={resolvedOgImage} />
-      <meta property="og:image:alt" content="Achyut Niroula — Software Engineer & Licensed Insurance Advisor" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Achyut Niroula, Software Engineer and Insurance Advisor" />
 
-      {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={resolvedOgImage} />
+      <meta name="twitter:image:alt" content="Achyut Niroula, Software Engineer and Insurance Advisor" />
 
-      {/* JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(webSiteJsonLd) }} />
+      {isProfilePage && (
+        <>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(personJsonLd) }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(profilePageJsonLd) }} />
+        </>
+      )}
+      {breadcrumbJsonLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbJsonLd) }} />
+      )}
     </Head>
   );
 }
