@@ -4,6 +4,12 @@ interface ProjectThumbnailProps {
   projectId: number;
 }
 
+// SVG rect rx only accepts one radius; chat bubble tails need one corner
+// squared off, so build the outline as a path instead.
+function bubblePath(x: number, y: number, w: number, h: number, tl: number, tr: number, br: number, bl: number): string {
+  return `M${x + tl},${y} H${x + w - tr} A${tr},${tr} 0 0 1 ${x + w},${y + tr} V${y + h - br} A${br},${br} 0 0 1 ${x + w - br},${y + h} H${x + bl} A${bl},${bl} 0 0 1 ${x},${y + h - bl} V${y + tl} A${tl},${tl} 0 0 1 ${x + tl},${y} Z`;
+}
+
 export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
   const uid = `proj${projectId}`;
 
@@ -62,7 +68,7 @@ export default function ProjectThumbnail({ projectId }: ProjectThumbnailProps) {
         {x:28, y:154, w:100, role:'ai'},
       ].map((b, i) => (
         <g key={i} opacity="0">
-          <rect x={b.x} y={b.y} width={b.w} height={26} rx={b.role==='user' ? '10 10 10 2' : '10 10 2 10'} fill={PANEL} stroke={PANEL_BORDER} strokeWidth="1" />
+          <path d={b.role === 'user' ? bubblePath(b.x, b.y, b.w, 26, 10, 10, 10, 2) : bubblePath(b.x, b.y, b.w, 26, 10, 10, 2, 10)} fill={PANEL} stroke={PANEL_BORDER} strokeWidth="1" />
           <rect x={b.x+12} y={b.y+10} width={b.w-32} height="4" rx="2" fill={MUTED} opacity="0.3" />
           <animate attributeName="opacity" values="0;1;1" dur={`${5+i}s`} repeatCount="indefinite" begin={`${i*0.7}s`} />
         </g>
