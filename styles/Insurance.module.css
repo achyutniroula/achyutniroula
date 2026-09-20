@@ -36,6 +36,7 @@
 .card {
   display: flex;
   flex-direction: column;
+  min-width: 0;
   border: 1px solid var(--color-border);
   transition: border-color 0.25s ease, transform 0.25s ease;
 }
@@ -70,6 +71,7 @@
 
 .content {
   padding: 1.75rem;
+  min-width: 0;
 }
 
 .card h3 {
