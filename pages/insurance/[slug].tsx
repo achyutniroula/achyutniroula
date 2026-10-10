@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Layout from '../../components/Layout';
 import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
@@ -18,7 +19,45 @@ import EstateTaxChart from '../../components/insurance/charts/EstateTaxChart';
 import TermLifePremiumChart from '../../components/insurance/charts/TermLifePremiumChart';
 import DisabilityElimPeriodChart from '../../components/insurance/charts/DisabilityElimPeriodChart';
 import WholeLifeCashValueChart from '../../components/insurance/charts/WholeLifeCashValueChart';
+import { getInsuranceDeepDive, DeepDiveTable, Lead } from '../../lib/insuranceDeepDives';
 import styles from '../../styles/InsuranceDetail.module.css';
+
+function DeepTable({ table }: { table: DeepDiveTable }) {
+  return (
+    <div className={styles.tableWrap}>
+      <table className={`${styles.table}${table.headers.length >= 3 ? ` ${styles.tableStackMobile}` : ''}`}>
+        <thead>
+          <tr>
+            {table.headers.map((header, i) => (
+              <th key={i}>{header}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((row, i) => (
+            <tr key={i}>
+              {row.map((cell, j) => (
+                <td key={j} data-label={table.headers[j]}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function LeadList({ items, className }: { items: Lead[]; className: string }) {
+  return (
+    <ul className={className}>
+      {items.map((item, i) => (
+        <li key={i}>
+          <strong>{item.lead}</strong> {item.text}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 interface InsuranceDetailProps {
   slug: string;
@@ -34,6 +73,7 @@ export default function InsuranceDetail({ slug, personalInfo }: InsuranceDetailP
   const Icon = service.icon;
   const Diagram = service.diagram;
   const { comparisonTable, howItWorks, costFactors, faqs, watchFor, exampleWalkthrough, advantageNote } = service.detail;
+  const deep = getInsuranceDeepDive(slug);
 
   return (
     <>
@@ -59,6 +99,25 @@ export default function InsuranceDetail({ slug, personalInfo }: InsuranceDetailP
               <p className={styles.summary}>{service.detail.summary}</p>
             </Reveal>
 
+            {deep && (
+              <Reveal delay={0.05}>
+                <figure className={styles.heroPhoto}>
+                  <Image
+                    src={`/images/insurance/${slug}.webp`}
+                    alt={service.photoAlt}
+                    width={1200}
+                    height={800}
+                    priority
+                    className={styles.heroPhotoImg}
+                  />
+                  <figcaption className={styles.heroPhotoCaption}>
+                    <span className={styles.heroPhotoHeading}>{deep.photo.heading}</span>
+                    <span>{deep.photo.caption}</span>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            )}
+
             <div ref={heroRef} data-reveal className={`${styles.heroDiagram}${heroVisible ? ' is-visible' : ''}`} style={{ '--reveal-delay': '0.1s' } as React.CSSProperties}>
               <Icon active={heroVisible} />
             </div>
@@ -75,6 +134,54 @@ export default function InsuranceDetail({ slug, personalInfo }: InsuranceDetailP
                 </div>
               </Reveal>
             </div>
+
+            {/* 2b. From zero */}
+            {deep && (
+              <div className={styles.sectionBlock}>
+                <Reveal>
+                  <span className="eyebrow">From zero</span>
+                  <h2 className={styles.sectionHeading}>{deep.fromZero.heading}</h2>
+                  <div className={styles.bodyText}>
+                    {deep.fromZero.intro.map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
+                    ))}
+                  </div>
+                  <p className={styles.subHeading}>{deep.fromZero.splitHeading}</p>
+                  <ol className={styles.splitList}>
+                    {deep.fromZero.split.map((item, i) => (
+                      <li key={i}>
+                        <strong>{item.lead}:</strong> {item.text}
+                      </li>
+                    ))}
+                  </ol>
+                  <div className={styles.proCon}>
+                    <div>
+                      <p className={styles.subHeading}>Why people like it</p>
+                      <ul className={styles.bulletList}>
+                        {deep.fromZero.likes.map((point, i) => (
+                          <li key={i}>{point}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p className={styles.subHeading}>Why it can bite</p>
+                      <ul className={styles.watchList}>
+                        {deep.fromZero.bites.map((point, i) => (
+                          <li key={i}>{point}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <p className={styles.leadPara}>
+                    <strong>{deep.fromZero.keyQuestion.lead}</strong> {deep.fromZero.keyQuestion.text}
+                  </p>
+                  <blockquote className={styles.plainTerms}>
+                    <span className={styles.plainTermsLabel}>In plain terms</span>
+                    {deep.fromZero.plainTerms}
+                  </blockquote>
+                </Reveal>
+              </div>
+            )}
 
             {/* 3. How it works — step by step */}
             <div className={styles.sectionBlock}>
@@ -101,6 +208,56 @@ export default function InsuranceDetail({ slug, personalInfo }: InsuranceDetailP
                 </ul>
               </Reveal>
             </div>
+
+            {deep && (
+              <>
+                {/* 3b-1. Structures */}
+                <div className={styles.sectionBlock}>
+                  <Reveal>
+                    <span className="eyebrow">Structures</span>
+                    <h2 className={styles.sectionHeading}>{deep.structures.heading}</h2>
+                    <p className={styles.tableIntro}>{deep.structures.intro}</p>
+                    <DeepTable table={deep.structures.table} />
+                    <p className={styles.leadPara}>
+                      <strong>{deep.structures.forYou.lead}</strong> {deep.structures.forYou.text}
+                    </p>
+                    <p className={styles.subHeading}>Other design terms you will hear</p>
+                    <LeadList items={deep.structures.otherTerms} className={styles.leadList} />
+                  </Reveal>
+                </div>
+
+                {/* 3b-2. What's inside */}
+                <div className={styles.sectionBlock}>
+                  <Reveal>
+                    <span className="eyebrow">Inside the product</span>
+                    <h2 className={styles.sectionHeading}>{deep.inside.heading}</h2>
+                    <p className={styles.tableIntro}>{deep.inside.intro}</p>
+                    <DeepTable table={deep.inside.table} />
+                    <p className={styles.subHeading}>Key points to explain</p>
+                    <LeadList items={deep.inside.keyPoints} className={styles.leadList} />
+                    <p className={styles.leadPara}>
+                      <strong>{deep.inside.rule.lead}</strong> {deep.inside.rule.text}
+                    </p>
+                  </Reveal>
+                </div>
+
+                {/* 3b-3. Canadian tax rules */}
+                <div className={styles.sectionBlock}>
+                  <Reveal>
+                    <span className="eyebrow">Tax</span>
+                    <h2 className={styles.sectionHeading}>{deep.tax.heading}</h2>
+                    <p className={styles.tableIntro}>{deep.tax.intro}</p>
+                    <ol className={styles.ruleList}>
+                      {deep.tax.rules.map((rule, i) => (
+                        <li key={i}>
+                          <strong>{rule.lead}</strong> {rule.text}
+                        </li>
+                      ))}
+                    </ol>
+                  </Reveal>
+                </div>
+              </>
+            )}
 
             {/* 3c. Comparison table */}
             <div className={styles.sectionBlock}>
@@ -136,6 +293,27 @@ export default function InsuranceDetail({ slug, personalInfo }: InsuranceDetailP
                 </Reveal>
               )}
             </div>
+
+            {/* 3d. Alternatives */}
+            {deep && (
+              <div className={styles.sectionBlock}>
+                <Reveal>
+                  <span className="eyebrow">Alternatives</span>
+                  <h2 className={styles.sectionHeading}>{deep.alternatives.heading}</h2>
+                  <p className={styles.tableIntro}>{deep.alternatives.intro}</p>
+                  <DeepTable table={deep.alternatives.table} />
+                  <p className={styles.subHeading}>Quick takes</p>
+                  <ul className={styles.bulletList}>
+                    {deep.alternatives.quickTakes.map((take, i) => (
+                      <li key={i}>{take}</li>
+                    ))}
+                  </ul>
+                  <p className={styles.leadPara}>
+                    <strong>{deep.alternatives.honest.lead}</strong> {deep.alternatives.honest.text}
+                  </p>
+                </Reveal>
+              </div>
+            )}
 
             {/* 4. Visual breakdown */}
             <div className={styles.sectionBlock}>

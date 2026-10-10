@@ -579,3 +579,206 @@
     background: linear-gradient(to right, transparent, var(--color-bg) 90%);
   }
 }
+
+/* Hero photo banner with caption */
+.heroPhoto {
+  position: relative;
+  margin: 2.5rem 0 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  aspect-ratio: 16 / 9;
+  background: var(--color-bg-alt);
+}
+
+.heroPhotoImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+
+.heroPhoto:hover .heroPhotoImg {
+  transform: scale(1.03);
+}
+
+.heroPhotoCaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 3rem 2rem 1.75rem;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+}
+
+.heroPhotoCaption span:last-child {
+  max-width: 40rem;
+  opacity: 0.9;
+}
+
+.heroPhotoHeading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  line-height: 1.25;
+}
+
+/* From-zero primer, structures, inside, tax */
+.subHeading {
+  margin: 2.25rem 0 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.splitList {
+  list-style: none;
+  counter-reset: split;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+  max-width: 60rem;
+}
+
+.splitList li {
+  counter-increment: split;
+  position: relative;
+  padding: 1.25rem 1.25rem 1.25rem 3.25rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+  color: var(--color-muted);
+  line-height: 1.65;
+  font-size: 1rem;
+}
+
+.splitList li::before {
+  content: counter(split);
+  position: absolute;
+  left: 1.1rem;
+  top: 1.2rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.splitList strong,
+.leadList strong,
+.ruleList strong,
+.leadPara strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.proCon {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 0 2.5rem;
+  max-width: 60rem;
+}
+
+.leadPara {
+  margin-top: 2rem;
+  max-width: 52rem;
+  color: var(--color-muted);
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+.plainTerms {
+  margin: 2rem 0 0;
+  padding: 1.5rem 1.75rem;
+  max-width: 52rem;
+  border-left: 2px solid var(--color-text);
+  background: var(--color-bg-alt);
+  color: var(--color-muted);
+  font-family: var(--font-serif);
+  font-style: italic;
+  line-height: 1.75;
+  font-size: 1.1rem;
+}
+
+.plainTermsLabel {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-text);
+  opacity: 0.6;
+}
+
+.leadList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 52rem;
+}
+
+.leadList li {
+  position: relative;
+  padding-left: 1.75rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.leadList li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-text);
+  opacity: 0.5;
+}
+
+.ruleList {
+  list-style: none;
+  counter-reset: rule;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 52rem;
+}
+
+.ruleList li {
+  counter-increment: rule;
+  position: relative;
+  padding-left: 2.75rem;
+  color: var(--color-muted);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.ruleList li::before {
+  content: counter(rule);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .heroPhoto {
+    aspect-ratio: 4 / 3;
+  }
+
+  .heroPhotoCaption {
+    padding: 2rem 1.25rem 1.25rem;
+    font-size: 0.92rem;
+  }
+}

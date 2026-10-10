@@ -913,10 +913,12 @@ export function getInsuranceServiceBySlug(slug: string): InsuranceService | unde
 
 // Homepage / overview stats. Edit these three values directly — they're the
 // single source of truth for the count-up counters shown on both pages.
+// servicesOffered counts the 8 insurance products plus the 8 registered/non-registered
+// account types explained on the site (16 total), shown as "15+".
 export const insuranceStats = {
-  servicesOffered: insuranceServices.length,
+  servicesOffered: 15,
   clientsHelped: 3,
-  premiumPlaced: 5000,
+  premiumPlaced: 15000,
 };
 
 export const insuranceDisclaimer =
