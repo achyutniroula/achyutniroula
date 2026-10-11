@@ -1,12 +1,12 @@
 # Achyut Niroula
 
-Software engineer based in North Bay, Ontario. I build full stack and AI systems, and I also work in insurance, helping people in Ontario with life, critical illness, disability, and registered account questions.
+Software engineer based in North Bay, Ontario. I build full stack and AI systems, and I also work as a financial advisor, helping people in Ontario with life, critical illness, disability, and registered account questions.
 
 [Portfolio](https://achyut-niroula.web.app) · [LinkedIn](https://www.linkedin.com/in/achyut-niroula) · [GitHub](https://github.com/achyutniroula) · [Email](mailto:niroula.achyut17@gmail.com)
 
 ## What I work on
 
-Most of my time goes into software engineering: full stack web apps, computer vision and multimodal AI pipelines, and distributed systems, usually in Python or TypeScript. Alongside that, I work in insurance in Ontario, covering life, critical illness, and disability insurance, plus registered accounts like TFSAs and RRSPs. The insurance section of my site currently uses two different terms for that role in different places, so I'm leaving the exact title out here until that's sorted out.
+Most of my time goes into software engineering: full stack web apps, computer vision and multimodal AI pipelines, and distributed systems, usually in Python or TypeScript. Alongside that, I work as a financial advisor in Ontario, covering life, critical illness, and disability insurance, plus registered accounts like TFSAs and RRSPs.
 
 ## Projects
 

@@ -148,22 +148,6 @@ export default function Resume({ personalInfo }: ResumeProps) {
                     className={styles.item}
                     data-timeline-entry
                   >
-                    <h3>Software Engineer, Researcher</h3>
-                    <p className={styles.institution}>Nipissing University — North Bay, ON</p>
-                    <p className={styles.date}>Jan. 2026 – Apr. 2026</p>
-                    <ul className={styles.details}>
-                      <li>Designed and deployed distributed REST APIs on AWS (EC2, S3, SQS) connecting 8 neural models in an async computer vision pipeline; owned service architecture and deployment for high availability with no senior engineering oversight.</li>
-                      <li>Containerized all microservices on Linux/EC2 with Docker; wrote 9 automated test suites covering frame-level correctness and pipeline edge cases.</li>
-                      <li>Implemented observability across all model endpoints; authored root-cause reports and API documentation consumed by internal engineering stakeholders; served as sole on-call engineer for production incidents.</li>
-                    </ul>
-                  </div>
-
-                  {/* Entry 2 */}
-                  <div
-                    ref={(el) => { entryRefs.current[2] = el; }}
-                    className={styles.item}
-                    data-timeline-entry
-                  >
                     <h3>Founder</h3>
                     <p className={styles.institution}>Norlease (northlease.ca) — North Bay, ON</p>
                     <p className={styles.date}>Aug. 2026 – present</p>
@@ -175,9 +159,53 @@ export default function Resume({ personalInfo }: ResumeProps) {
                     </ul>
                   </div>
 
+                  {/* Entry 2 */}
+                  <div
+                    ref={(el) => { entryRefs.current[2] = el; }}
+                    className={styles.item}
+                    data-timeline-entry
+                  >
+                    <h3>Management Trainee</h3>
+                    <p className={styles.institution}>Enterprise Rent-A-Car — North Bay, ON</p>
+                    <p className={styles.date}>Oct. 2026 – present</p>
+                    <ul className={styles.details}>
+                      <li>Training across customer service, sales, finance, and branch operations, serving customers directly while learning fleet and inventory management.</li>
+                    </ul>
+                  </div>
+
                   {/* Entry 3 */}
                   <div
                     ref={(el) => { entryRefs.current[3] = el; }}
+                    className={styles.item}
+                    data-timeline-entry
+                  >
+                    <h3>Sales Associate II, Tool Rental &amp; Flooring</h3>
+                    <p className={styles.institution}>The Home Depot Canada — North Bay, ON</p>
+                    <p className={styles.date}>Dec. 2022 – present</p>
+                    <ul className={styles.details}>
+                      <li>Promoted from Lot Associate to Sales Associate II, now covering two departments and working with teammates to resolve customer issues.</li>
+                    </ul>
+                  </div>
+
+                  {/* Entry 4 */}
+                  <div
+                    ref={(el) => { entryRefs.current[4] = el; }}
+                    className={styles.item}
+                    data-timeline-entry
+                  >
+                    <h3>Software Engineer, Researcher</h3>
+                    <p className={styles.institution}>Nipissing University — North Bay, ON</p>
+                    <p className={styles.date}>Jan. 2026 – Apr. 2026</p>
+                    <ul className={styles.details}>
+                      <li>Designed and deployed distributed REST APIs on AWS (EC2, S3, SQS) connecting 8 neural models in an async computer vision pipeline; owned service architecture and deployment for high availability with no senior engineering oversight.</li>
+                      <li>Containerized all microservices on Linux/EC2 with Docker; wrote 9 automated test suites covering frame-level correctness and pipeline edge cases.</li>
+                      <li>Implemented observability across all model endpoints; authored root-cause reports and API documentation consumed by internal engineering stakeholders; served as sole on-call engineer for production incidents.</li>
+                    </ul>
+                  </div>
+
+                  {/* Entry 5 */}
+                  <div
+                    ref={(el) => { entryRefs.current[5] = el; }}
                     className={styles.item}
                     data-timeline-entry
                   >
@@ -202,9 +230,9 @@ export default function Resume({ personalInfo }: ResumeProps) {
                   <h2>Projects</h2>
                 </div>
                 <div className={styles.content}>
-                  {/* Entry 4 */}
+                  {/* Entry 6 */}
                   <div
-                    ref={(el) => { entryRefs.current[4] = el; }}
+                    ref={(el) => { entryRefs.current[6] = el; }}
                     className={styles.item}
                     data-timeline-entry
                   >
@@ -219,9 +247,9 @@ export default function Resume({ personalInfo }: ResumeProps) {
                     </ul>
                   </div>
 
-                  {/* Entry 5 */}
+                  {/* Entry 7 */}
                   <div
-                    ref={(el) => { entryRefs.current[5] = el; }}
+                    ref={(el) => { entryRefs.current[7] = el; }}
                     className={styles.item}
                     data-timeline-entry
                   >
@@ -234,9 +262,9 @@ export default function Resume({ personalInfo }: ResumeProps) {
                     </ul>
                   </div>
 
-                  {/* Entry 6 */}
+                  {/* Entry 8 */}
                   <div
-                    ref={(el) => { entryRefs.current[6] = el; }}
+                    ref={(el) => { entryRefs.current[8] = el; }}
                     className={styles.item}
                     data-timeline-entry
                   >
@@ -256,9 +284,9 @@ export default function Resume({ personalInfo }: ResumeProps) {
                   <h2>Education</h2>
                 </div>
                 <div className={styles.content}>
-                  {/* Entry 7 */}
+                  {/* Entry 9 */}
                   <div
-                    ref={(el) => { entryRefs.current[7] = el; }}
+                    ref={(el) => { entryRefs.current[9] = el; }}
                     className={styles.item}
                     data-timeline-entry
                   >
@@ -280,9 +308,9 @@ export default function Resume({ personalInfo }: ResumeProps) {
                   <h2>Certifications</h2>
                 </div>
                 <div className={styles.content}>
-                  {/* Entry 8 */}
+                  {/* Entry 10 */}
                   <div
-                    ref={(el) => { entryRefs.current[8] = el; }}
+                    ref={(el) => { entryRefs.current[10] = el; }}
                     className={styles.item}
                     data-timeline-entry
                   >
@@ -293,9 +321,9 @@ export default function Resume({ personalInfo }: ResumeProps) {
                 </div>
               </div>
 
-              {/* Technical Skills Section - Entry 9 */}
+              {/* Technical Skills Section - Entry 11 */}
               <div
-                ref={(el) => { entryRefs.current[9] = el; }}
+                ref={(el) => { entryRefs.current[11] = el; }}
                 className={styles.section}
                 data-timeline-entry
               >

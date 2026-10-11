@@ -55,7 +55,7 @@ export default function Home({ projects, personalInfo }: HomeProps) {
                 </p>
                 <div className={styles.heroLinks}>
                   <a href="#projects">View projects</a>
-                  <a href="#insurance">Insurance services</a>
+                  <a href="#finance">Financial services</a>
                   <a href={personalInfo.resume_url} download>Download resume</a>
                 </div>
               </div>
@@ -104,10 +104,10 @@ export default function Home({ projects, personalInfo }: HomeProps) {
           </div>
         </section>
 
-        <section className={styles.section} id="insurance">
+        <section className={styles.section} id="finance">
           <div className="container">
             <Reveal>
-              <h2 className={styles.eyebrow}>Insurance</h2>
+              <h2 className={styles.eyebrow}>Finance</h2>
               <hr className="rule" />
             </Reveal>
 
@@ -124,7 +124,7 @@ export default function Home({ projects, personalInfo }: HomeProps) {
               <StatCounter label="in deposits processed" value={insuranceStats.premiumPlaced} prefix="$" suffix="+" />
             </div>
 
-            <Link href="/insurance" className={styles.moreLink}>View insurance services</Link>
+            <Link href="/insurance" className={styles.moreLink}>View products</Link>
           </div>
         </section>
 
