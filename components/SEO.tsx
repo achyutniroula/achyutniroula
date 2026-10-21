@@ -20,9 +20,9 @@ interface SEOProps {
   breadcrumbs?: Breadcrumb[];
 }
 
-const DEFAULT_TITLE = 'Achyut Niroula | Software Engineer and Financial Advisor';
+const DEFAULT_TITLE = 'Achyut Niroula | Software Engineer and Insurance Advisor';
 const DEFAULT_DESCRIPTION =
-  'Achyut Niroula is a software engineer and financial advisor based in North Bay, Ontario, and founder of Norlease, building AI powered rental infrastructure.';
+  'Achyut Niroula is a software engineer and insurance advisor based in North Bay, Ontario, and founder of Norlease, building AI powered rental infrastructure.';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 const PERSON_ID = `${SITE_URL}/#person`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -32,10 +32,10 @@ const DEFAULT_KEYWORDS = [
   'Achyut Niroula Software Engineer',
   'Achyut Niroula Nipissing University',
   'Achyut Niroula Ontario',
-  'Achyut Niroula Financial Advisor',
+  'Achyut Niroula Insurance Advisor',
   'Achyut Niroula Norlease',
   'Software Engineer North Bay',
-  'Financial Advisor North Bay Ontario',
+  'Insurance Advisor North Bay Ontario',
 ];
 
 // Prevents a literal "</script>" inside JSON-LD data from breaking out of
@@ -74,7 +74,7 @@ export default function SEO({
     familyName: 'Niroula',
     url: SITE_URL,
     image: `${SITE_URL}/profile.png`,
-    jobTitle: ['Software Engineer', 'Financial Advisor'],
+    jobTitle: ['Software Engineer', 'Insurance Advisor'],
     description: DEFAULT_DESCRIPTION,
     alumniOf: {
       '@type': 'EducationalOrganization',
@@ -172,13 +172,13 @@ export default function SEO({
       <meta property="og:image" content={resolvedOgImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="Achyut Niroula, Software Engineer and Financial Advisor" />
+      <meta property="og:image:alt" content="Achyut Niroula, Software Engineer and Insurance Advisor" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={resolvedOgImage} />
-      <meta name="twitter:image:alt" content="Achyut Niroula, Software Engineer and Financial Advisor" />
+      <meta name="twitter:image:alt" content="Achyut Niroula, Software Engineer and Insurance Advisor" />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(webSiteJsonLd) }} />
       {isProfilePage && (
