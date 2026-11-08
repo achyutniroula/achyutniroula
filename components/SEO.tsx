@@ -20,9 +20,9 @@ interface SEOProps {
   breadcrumbs?: Breadcrumb[];
 }
 
-const DEFAULT_TITLE = 'Achyut Niroula | Software Engineer and Insurance Advisor';
+const DEFAULT_TITLE = 'Achyut Niroula | Founder @NorLease';
 const DEFAULT_DESCRIPTION =
-  'Achyut Niroula is a software engineer and insurance advisor based in North Bay, Ontario, and founder of Norlease, building AI powered rental infrastructure.';
+  'Achyut Niroula is the founder of Norlease (operations and engineering), building verified rental infrastructure for Northern Ontario and Quebec. Based in North Bay, Ontario, and also a software engineer and licensed insurance advisor.';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 const PERSON_ID = `${SITE_URL}/#person`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -74,7 +74,7 @@ export default function SEO({
     familyName: 'Niroula',
     url: SITE_URL,
     image: `${SITE_URL}/profile.png`,
-    jobTitle: ['Software Engineer', 'Insurance Advisor'],
+    jobTitle: ['Founder', 'Software Engineer', 'Insurance Advisor'],
     description: DEFAULT_DESCRIPTION,
     alumniOf: {
       '@type': 'EducationalOrganization',
@@ -172,13 +172,13 @@ export default function SEO({
       <meta property="og:image" content={resolvedOgImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="Achyut Niroula, Software Engineer and Insurance Advisor" />
+      <meta property="og:image:alt" content="Achyut Niroula, Founder @NorLease" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={resolvedOgImage} />
-      <meta name="twitter:image:alt" content="Achyut Niroula, Software Engineer and Insurance Advisor" />
+      <meta name="twitter:image:alt" content="Achyut Niroula, Founder @NorLease" />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(webSiteJsonLd) }} />
       {isProfilePage && (
