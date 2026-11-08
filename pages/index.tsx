@@ -50,6 +50,9 @@ export default function Home({ projects, personalInfo }: HomeProps) {
               <div className={styles.heroText}>
                 <span className={styles.eyebrow}>Bio</span>
                 <h1 className={styles.heroTitle}>Achyut Niroula</h1>
+                <p className={styles.heroRole}>
+                  Founder at Norlease <span>(Operations and Engineering)</span>
+                </p>
                 <p className={styles.heroBio}>
                   {personalInfo.bio}
                 </p>

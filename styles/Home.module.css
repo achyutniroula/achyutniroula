@@ -36,6 +36,19 @@
   color: var(--color-text);
 }
 
+.heroRole {
+  margin: 0.9rem 0 1.25rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+}
+
+.heroRole span {
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
 .heroBio {
   color: var(--color-muted);
   font-size: 1.05rem;

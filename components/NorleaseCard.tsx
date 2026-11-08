@@ -7,9 +7,20 @@ export default function NorleaseCard() {
     <div className={styles.card}>
       <div className={styles.animFrame}>
         <NorleaseSkyline />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/norlease-watermark.png"
+          alt=""
+          aria-hidden="true"
+          width={720}
+          height={414}
+          className={styles.watermark}
+          loading="lazy"
+          decoding="async"
+        />
       </div>
       <div className={styles.content}>
-        <span className={styles.pill}>In development</span>
+        <span className={styles.pill}>{norlease.status}</span>
         <h3 className={styles.title}>{norlease.name}</h3>
         <p className={styles.tagline}>{norlease.tagline}</p>
         <p className={styles.description}>{norlease.description}</p>

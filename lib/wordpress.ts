@@ -254,7 +254,7 @@ export const getMockPersonalInfo = (): PersonalInfo => ({
   linkedin: 'https://www.linkedin.com/in/achyut-niroula',
   github: 'https://github.com/achyutniroula',
   instagram: 'https://instagram.com/achniroula',
-  resume_url: '/resume.pdf',
-  bio: 'Based in North Bay, Ontario. Founder & CEO of Norlease, building verified rental infrastructure for Northern Ontario. Computer Science Honours graduate from Nipissing University with expertise in distributed AI systems, and a licensed LLQP insurance advisor in Ontario.',
+  resume_url: '/Resume_Achyut_Niroula.pdf',
+  bio: 'Based in North Bay, Ontario. I run operations and engineering at Norlease, a verified rental platform for Northern Ontario and Quebec. Computer Science Honours graduate from Nipissing University with a background in distributed AI systems, and a licensed LLQP insurance advisor in Ontario.',
   profile_image: '/profile.png',
 });

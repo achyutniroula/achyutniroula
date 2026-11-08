@@ -25,6 +25,19 @@
   height: 100%;
 }
 
+.watermark {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1rem;
+  width: clamp(110px, 24%, 170px);
+  height: auto;
+  opacity: 0.88;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 1px 6px rgba(4, 10, 31, 0.55));
+  z-index: 2;
+}
+
 .content {
   padding: 2.25rem;
   display: flex;
